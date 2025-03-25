@@ -2,36 +2,34 @@
 
 MAX = 100
 
+# ...existing code...
 def calculate_sum(arr):
-   result = 0
-   for num in arr:
-      result += num
-   return result
-
+    # Changed to use built-in sum
+    return sum(arr)
+# ...existing code...
 def main():
-   try:
-      n = int(input("Enter the number of elements (1-100): "))
-      if not 1 <= n <= MAX:
+    try:
+        n = int(input("Enter the number of elements (1-100): "))
+        if not 1 <= n <= MAX:
             print("Invalid input. Please provide a digit ranging from 1 to 100.")
-            exit(1)
+            return  # Changed from exit(1)
 
-      arr = []
+        arr = []
 
-      print(f"Enter {n} integers:")
-      for _ in range(n):
+        print(f"Enter {n} integers:")
+        for _ in range(n):
             try:
-               arr.append(int(input()))
+                arr.append(int(input()))
             except ValueError:
-               print("Invalid input. Please enter valid integers.")
-               exit(1)
+                print("Invalid input. Please enter valid integers.")
+                return  # Changed from exit(1)
 
-      total = calculate_sum(arr)
+        total = calculate_sum(arr)
+        print("Sum of the numbers:", total)
 
-      print("Sum of the numbers:", total)
-
-   except KeyboardInterrupt:
-      print("\nProgram terminated by user.")
-      exit(1)
-
+    except KeyboardInterrupt:
+        print("\nProgram terminated by user.")
+        # Removed exit(1) to allow graceful exit
+# ...existing code...
 if __name__ == "__main__":
-   main()
+    main()
